@@ -1,73 +1,195 @@
 <!doctype html>
+<!--
+  This is the main HTML file for the CPP Applied Mathematics Lab website.
+
+  HOW TO READ THIS FILE
+  - HTML controls page structure (what is on the page).
+  - CSS (inside the <style> tag) controls how it looks (colors, spacing, fonts).
+  - JavaScript (inside the <script> tag at the bottom) adds small behaviors
+    like the high-contrast toggle and loading GitHub repositories.
+
+  SAFE EDITING TIPS
+  - Change text between tags like <h1> ... </h1> or <p> ... </p>.
+  - Change links in attributes like href="https://...".
+  - Colors are defined as CSS variables near the top (search for :root { ... }).
+  - Keep the very first line (<!doctype html>) exactly as-is to avoid "quirks mode".
+-->
 <html lang="en">
 <head>
+  <!-- Tells the browser we are using Unicode (works for most languages) -->
   <meta charset="utf-8" />
+
+  <!-- Makes the layout adapt to phones/tablets by setting the viewport scale -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- The text you see in the browser tab and when sharing links -->
   <title>Cal Poly Pomona Applied Mathematics Lab — Welcome</title>
+
+  <!-- Short description for search engines and link previews -->
   <meta name="description" content="Official website for CPPAML." />
+
+  <!-- Open Graph tags: used by social media (X/Twitter, Facebook, etc.) for previews -->
   <meta property="og:title" content="CPPAML" />
   <meta property="og:description" content="Official website for Cal Poly Pomona Applied Mathematics Lab." />
   <meta property="og:type" content="website" />
+
+  <!-- Address bar color on some mobile browsers -->
   <meta name="theme-color" content="#0ea5e9" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230ea5e9'/%3E%3Ctext x='50' y='57' font-size='46' text-anchor='middle' fill='white' font-family='ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif'%3EO%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tiny inline SVG icon shown in the browser tab. Replace if you have your own favicon. -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230ea5e9'/%3E%3Ctext x='50' y='57' font-size='46' text-anchor='middle' fill='white' font-family='ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif'%3EO%3C/text%3E%3C/svg%3E"
+  />
+
+  <!--
+    ============
+    BASIC STYLES
+    ============
+    All the CSS below controls colors, spacing, and layout.
+    If you don’t know CSS, you can still change simple things like colors or fonts.
+  -->
   <style>
-    :root{
-      --bg: #0b1020; /* dark */
-      --fg: #e5eef7;
-      --muted: #9db2c7;
-      --card: #0f172a;
-      --accent: #0ea5e9;
-      --ring: rgba(14,165,233,.35);
-      --shadow: 0 10px 30px rgba(2, 6, 23, .35);
-      --radius: 18px;
+    /*
+      CSS VARIABLES (THEME COLORS, RADIUS, SHADOWS)
+      - Change these to quickly change the site's look.
+      - Example: set --accent to another hex color like #ff00aa
+    */
+    :root {
+      --bg: #0b1020;    /* page background (dark mode default) */
+      --fg: #e5eef7;    /* main text color */
+      --muted: #9db2c7; /* lighter text for descriptions */
+      --card: #0f172a;  /* card background blocks */
+      --accent: #0ea5e9;/* link/button color */
+      --ring: rgba(14, 165, 233, 0.35); /* focus outline glow */
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.35); /* drop shadow */
+      --radius: 18px;   /* corner roundness for cards/buttons */
     }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f8fafc; --fg:#0b1324; --muted:#5a6b7c; --card:#ffffff; --accent:#0ea5e9; --ring: rgba(14,165,233,.25); --shadow: 0 10px 25px rgba(2, 6, 23, .10);}
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; color:var(--fg); background:radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.12), transparent 40%), radial-gradient(800px 500px at 90% 10%, rgba(99,102,241,.10), transparent 40%), var(--bg);}
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1100px; margin:0 auto; padding:24px}
-    header{position:sticky; top:0; backdrop-filter:saturate(180%) blur(10px); background:linear-gradient(to bottom, rgba(15,23,42,.85), rgba(15,23,42,.6)); border-bottom:1px solid rgba(148,163,184,.12);}
-    @media (prefers-color-scheme: light){ header{ background:rgba(248,250,252,.8);} }
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .logo{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
-    .logo-mark{width:36px;height:36px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:white; box-shadow: var(--shadow)}
-    .nav a{padding:10px 12px; border-radius:10px}
-    .nav a[aria-current="page"]{background:rgba(14,165,233,.12)}
 
-    .hero{padding:84px 0 36px}
-    .title{font-size:clamp(28px, 4vw, 46px); line-height:1.1; margin:0 0 12px}
-    .subtitle{color:var(--muted); max-width:70ch; margin:0}
-    .actions{margin-top:22px; display:flex; gap:14px; flex-wrap:wrap}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; background:var(--accent); color:white; font-weight:700; border:0; box-shadow:var(--shadow)}
-    .btn.secondary{background:transparent; color:var(--fg); border:1px solid rgba(148,163,184,.3)}
-    .btn:focus{outline:3px solid var(--ring); outline-offset:2px}
-
-    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:18px}
-    .card{grid-column:span 12; background:var(--card); padding:18px; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid rgba(148,163,184,.12)}
-    @media (min-width: 800px){
-      .card.third{grid-column:span 4}
-      .card.half{grid-column:span 6}
+    /*
+      Light mode overrides. If user's system prefers a light theme,
+      these values replace the dark ones above.
+    */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --fg: #0b1324;
+        --muted: #5a6b7c;
+        --card: #ffffff;
+        --accent: #0ea5e9;
+        --ring: rgba(14, 165, 233, 0.25);
+        --shadow: 0 10px 25px rgba(2, 6, 23, 0.10);
+      }
     }
-    .card h3{margin:4px 0 8px; font-size:18px}
-    .muted{color:var(--muted)}
-    .repo{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid rgba(148,163,184,.12)}
-    .repo:first-child{border-top:0}
-    .footer{margin:48px 0 24px; text-align:center; color:var(--muted)}
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border-width:0}
-    .switch{display:inline-flex; align-items:center; gap:10px}
+
+    /* A few global resets for consistent layout */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    /*
+      The body styles control the page font, text color, and background.
+      The background uses a subtle pattern with gradients.
+    */
+    body {
+      margin: 0;
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      color: var(--fg);
+      background:
+        /* blue glow on left */
+        radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.12), transparent 40%),
+        /* purple glow on right */
+        radial-gradient(800px 500px at 90% 10%, rgba(99,102,241,.10), transparent 40%),
+        var(--bg); /* fallback solid background color */
+    }
+
+    /* Links (a) look like the accent color, underlined on hover */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /*
+      .container limits line length for readability and centers the content.
+      Increase max-width for wider pages.
+    */
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    /*
+      Sticky header that blurs when scrolling.
+      The light-mode media query below adjusts background color.
+    */
+    header {
+      position: sticky; top: 0;
+      backdrop-filter: saturate(180%) blur(10px);
+      background: linear-gradient(to bottom, rgba(15,23,42,.85), rgba(15,23,42,.6));
+      border-bottom: 1px solid rgba(148,163,184,.12);
+    }
+    @media (prefers-color-scheme: light) {
+      header { background: rgba(248,250,252,.8); }
+    }
+
+    /* Top navigation bar: logo on the left, links on the right */
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .3px; }
+    .logo-mark { width: 36px; height: 36px; border-radius: 12px; background: var(--accent); display: grid; place-items: center; color: white; box-shadow: var(--shadow); }
+    .nav a { padding: 10px 12px; border-radius: 10px; }
+    .nav a[aria-current="page"] { background: rgba(14,165,233,.12); }
+
+    /* Hero (top section) */
+    .hero { padding: 84px 0 36px; }
+    .title { font-size: clamp(28px, 4vw, 46px); line-height: 1.1; margin: 0 0 12px; }
+    .subtitle { color: var(--muted); max-width: 70ch; margin: 0; }
+    .actions { margin-top: 22px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; background: var(--accent); color: white; font-weight: 700; border: 0; box-shadow: var(--shadow); }
+    .btn.secondary { background: transparent; color: var(--fg); border: 1px solid rgba(148,163,184,.3); }
+    .btn:focus { outline: 3px solid var(--ring); outline-offset: 2px; }
+
+    /* Grid system for responsive card layout (12 columns) */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .card { grid-column: span 12; background: var(--card); padding: 18px; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(148,163,184,.12); }
+    @media (min-width: 800px) {
+      .card.third { grid-column: span 4; } /* 3 cards per row */
+      .card.half  { grid-column: span 6; } /* 2 cards per row */
+    }
+    .card h3 { margin: 4px 0 8px; font-size: 18px; }
+
+    /* Muted text color (used for descriptions) */
+    .muted { color: var(--muted); }
+
+    /* GitHub repo list items */
+    .repo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid rgba(148,163,184,.12); }
+    .repo:first-child { border-top: 0; }
+
+    /* Footer */
+    .footer { margin: 48px 0 24px; text-align: center; color: var(--muted); }
+
+    /* Screen-reader only helper (visually hidden but accessible) */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+
+    /* Small wrapper to align the high-contrast toggle nicely */
+    .switch { display: inline-flex; align-items: center; gap: 10px; }
   </style>
 </head>
+
 <body>
+  <!--
+    ======
+    HEADER
+    ======
+    The header contains the site logo and the navigation links.
+    - Update the site name inside the <span> below to rename.
+    - Update the <a href="#..."> links to match your sections.
+  -->
   <header>
     <div class="container nav" role="navigation" aria-label="Main">
+      <!-- Site logo/name on the left. href="#" means it links to top of the page. -->
       <a class="logo" href="#" aria-current="page">
+        <!-- Colored rounded square. aria-hidden hides it from screen readers. -->
         <span class="logo-mark" aria-hidden="true"></span>
         <span>Cal Poly Pomona Applied Mathematics Lab</span>
       </a>
+
+      <!-- Navigation links on the right. Update targets (#about, #projects, etc.). -->
       <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
@@ -77,14 +199,28 @@
     </div>
   </header>
 
+  <!--
+    ====
+    MAIN
+    ====
+    The main content area. It holds several sections (hero, about, projects, etc.).
+    Each section has an id like id="about" so links can jump to it.
+  -->
   <main class="container">
+    <!-- Hero: big title at the top of the page -->
     <section class="hero" id="home">
+      <!-- Main headline. Change to something catchy. -->
       <h1 class="title">Robots are cool!</h1>
+      <!-- Short description under the headline. -->
       <p class="subtitle">This is an empty template</p>
+
+      <!-- Action buttons: one links to GitHub, the other scrolls to Projects section -->
       <div class="actions">
         <a class="btn" href="https://github.com/CPPAML" target="_blank" rel="noopener">View our GitHub</a>
         <a class="btn secondary" href="#projects">Explore projects</a>
       </div>
+
+      <!-- High-contrast toggle for accessibility -->
       <div class="switch" style="margin-top:14px">
         <input id="toggle-contrast" type="checkbox" aria-describedby="contrast-mode" />
         <label for="toggle-contrast">High‑contrast mode</label>
@@ -92,13 +228,19 @@
       </div>
     </section>
 
+    <!-- About section: two cards side-by-side on larger screens -->
     <section id="about" class="grid" aria-label="About Cal Poly Pomona Applied Mathematics Lab">
       <article class="card half">
         <h3>About</h3>
-        <p>Replace this text with a one‑paragraph description of what our organization does, who we serve, and why it exists.</p>
+        <p>
+          Replace this text with a one‑paragraph description of what our organization does,
+          who we serve, and why it exists.
+        </p>
       </article>
+
       <article class="card half">
         <h3>Highlights</h3>
+        <!-- Simple list. Add/remove <li> items as needed. -->
         <ul class="muted" style="margin:0 0 0 18px">
           <li>Cool thing 1</li>
           <li>Cool thing 2</li>
@@ -107,17 +249,20 @@
       </article>
     </section>
 
+    <!-- Projects section: three example project cards. Duplicate/remove as needed. -->
     <section id="projects" class="grid" aria-label="Featured projects">
       <article class="card third">
         <h3>RTDE Deployment</h3>
         <p class="muted">Deployment and Sim Testing of RTDE for UR Arms</p>
         <p><a href="https://github.com/CPPAML/Deployment-RTDE">Read more →</a></p>
       </article>
+
       <article class="card third">
         <h3>Project Two</h3>
         <p class="muted">Another highlight. Keep this tight; visitors should grasp it in a few seconds.</p>
         <p><a href="#">Read more →</a></p>
       </article>
+
       <article class="card third">
         <h3>Project Three</h3>
         <p class="muted">Optional card. Duplicate and replace with actual projects or delete this section.</p>
@@ -125,6 +270,7 @@
       </article>
     </section>
 
+    <!-- Team section: add member info, photos, or links here. -->
     <section id="team" class="grid" aria-label="Team">
       <article class="card">
         <h3>Team</h3>
@@ -132,6 +278,7 @@
       </article>
     </section>
 
+    <!-- Latest section: JavaScript below fills this with your latest GitHub repos. -->
     <section id="latest" class="grid" aria-label="Latest repositories">
       <article class="card">
         <h3>Latest on GitHub</h3>
@@ -140,47 +287,81 @@
       </article>
     </section>
 
+    <!-- Contact section: update email and social links -->
     <section id="contact" class="grid" aria-label="Contact">
       <article class="card">
         <h3>Contact</h3>
-        <p class="muted">Email: <a href="mailto:hello@example.com">hello@example.com</a> • X/Twitter: <a href="https://x.com/example" target="_blank" rel="noopener">@example</a></p>
+        <p class="muted">
+          Email: <a href="mailto:hello@example.com">hello@example.com</a>
+          • X/Twitter: <a href="https://x.com/example" target="_blank" rel="noopener">@example</a>
+        </p>
       </article>
     </section>
 
+    <!-- Footer: the year auto-updates with JavaScript below -->
     <footer class="footer">
       <small>© <span id="year"></span> Cal Poly Pomona Applied Mathematics Lab Built with GitHub Pages</small>
     </footer>
   </main>
 
+  <!--
+    ==========
+    JAVASCRIPT
+    ==========
+    You can skip this section if you only want to change text and links.
+    The code here:
+    1) Controls the high-contrast toggle (remembers your choice using localStorage).
+    2) Fills in the current year in the footer.
+    3) Loads recent public repositories from the GitHub organization.
+  -->
   <script>
-    // --- High contrast toggle (stored in localStorage) ---
+    // 1) High-contrast toggle (saves preference between visits)
     const checkbox = document.getElementById('toggle-contrast');
+
+    // Read previously saved setting: '1' means ON, anything else means OFF
     const hc = localStorage.getItem('contrast') === '1';
+
+    // If ON, apply a bit of extra contrast and saturation to the whole page
     if (hc) document.documentElement.style.filter = 'contrast(1.15) saturate(1.1)';
+
+    // Make the checkbox reflect the saved state
     checkbox.checked = hc;
+
+    // When the checkbox changes, update the page and save the new setting
     checkbox.addEventListener('change', () => {
       const on = checkbox.checked;
       document.documentElement.style.filter = on ? 'contrast(1.15) saturate(1.1)' : '';
       localStorage.setItem('contrast', on ? '1' : '0');
     });
 
-    // --- Year ---
+    // 2) Set the footer year to the current year (e.g., 2025)
     document.getElementById('year').textContent = new Date().getFullYear();
 
-
-    // --- Fetch latest repos---
+    // 3) Fetch and show the latest repositories from the GitHub org below.
+    //    To use a different org or user, change the value of ORG_JSON_HANDLE.
     const ORG_JSON_HANDLE = 'CPPAML';
-    async function loadRepos(){
-      try{
+
+    // This function asks GitHub for repository data and inserts it into the page.
+    async function loadRepos() {
+      try {
+        // Ask GitHub for 6 most recently updated repos for this org
         const res = await fetch(`https://api.github.com/orgs/${ORG_JSON_HANDLE}/repos?per_page=6&sort=updated`);
-        if(!res.ok) throw new Error('GitHub API error');
+        if (!res.ok) throw new Error('GitHub API error');
+
+        // Convert the response to usable JavaScript objects
         const data = await res.json();
+
+        // Find the container where we will place repo items
         const root = document.getElementById('repos');
         root.innerHTML = '';
-        data.slice(0,6).forEach(repo => {
+
+        // For each repo, create a small block with its name, description, and stars
+        data.slice(0, 6).forEach(repo => {
           const div = document.createElement('div');
           div.className = 'repo';
-          div.setAttribute('role','listitem');
+          div.setAttribute('role', 'listitem'); // helps screen readers
+
+          // Inner HTML template for a single repo line
           div.innerHTML = `
             <div>
               <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
@@ -188,12 +369,17 @@
             </div>
             <div class="muted" style="font-size:12px">Updated ${new Date(repo.updated_at).toLocaleDateString()}</div>
           `;
+
+          // Add the new repo block to the list on the page
           root.appendChild(div);
         });
-      }catch(err){
+      } catch (err) {
+        // If anything goes wrong (e.g., rate limit), show a friendly message
         document.getElementById('repos').innerHTML = '<p class="muted">Unable to load repos right now.</p>';
       }
     }
+
+    // Run the function when the page loads
     loadRepos();
   </script>
 </body>
