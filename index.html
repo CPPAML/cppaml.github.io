@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cal Poly Pomona Applied Mathematics Lab — Welcome</title>
+  <meta name="description" content="Official website for CPPAML." />
+  <meta property="og:title" content="CPPAML" />
+  <meta property="og:description" content="Official website for Cal Poly Pomona Applied Mathematics Lab." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230ea5e9'/%3E%3Ctext x='50' y='57' font-size='46' text-anchor='middle' fill='white' font-family='ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif'%3EO%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg: #0b1020; /* dark */
+      --fg: #e5eef7;
+      --muted: #9db2c7;
+      --card: #0f172a;
+      --accent: #0ea5e9;
+      --ring: rgba(14,165,233,.35);
+      --shadow: 0 10px 30px rgba(2, 6, 23, .35);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f8fafc; --fg:#0b1324; --muted:#5a6b7c; --card:#ffffff; --accent:#0ea5e9; --ring: rgba(14,165,233,.25); --shadow: 0 10px 25px rgba(2, 6, 23, .10);}
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; color:var(--fg); background:radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.12), transparent 40%), radial-gradient(800px 500px at 90% 10%, rgba(99,102,241,.10), transparent 40%), var(--bg);}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+    header{position:sticky; top:0; backdrop-filter:saturate(180%) blur(10px); background:linear-gradient(to bottom, rgba(15,23,42,.85), rgba(15,23,42,.6)); border-bottom:1px solid rgba(148,163,184,.12);}
+    @media (prefers-color-scheme: light){ header{ background:rgba(248,250,252,.8);} }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .logo{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
+    .logo-mark{width:36px;height:36px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:white; box-shadow: var(--shadow)}
+    .nav a{padding:10px 12px; border-radius:10px}
+    .nav a[aria-current="page"]{background:rgba(14,165,233,.12)}
+
+    .hero{padding:84px 0 36px}
+    .title{font-size:clamp(28px, 4vw, 46px); line-height:1.1; margin:0 0 12px}
+    .subtitle{color:var(--muted); max-width:70ch; margin:0}
+    .actions{margin-top:22px; display:flex; gap:14px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; background:var(--accent); color:white; font-weight:700; border:0; box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent; color:var(--fg); border:1px solid rgba(148,163,184,.3)}
+    .btn:focus{outline:3px solid var(--ring); outline-offset:2px}
+
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:18px}
+    .card{grid-column:span 12; background:var(--card); padding:18px; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid rgba(148,163,184,.12)}
+    @media (min-width: 800px){
+      .card.third{grid-column:span 4}
+      .card.half{grid-column:span 6}
+    }
+    .card h3{margin:4px 0 8px; font-size:18px}
+    .muted{color:var(--muted)}
+    .repo{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid rgba(148,163,184,.12)}
+    .repo:first-child{border-top:0}
+    .footer{margin:48px 0 24px; text-align:center; color:var(--muted)}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border-width:0}
+    .switch{display:inline-flex; align-items:center; gap:10px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main">
+      <a class="logo" href="#" aria-current="page">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>Cal Poly Pomona Applied Mathematics Lab</span>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <h1 class="title">Building things that matter.</h1>
+      <p class="subtitle">This is the bare‑bones, zero‑dependency starter for your GitHub Organization site. Edit this single file to customize the content, colors, and sections. Deploy it by pushing <code>index.html</code> to your <strong>cppaml.github.io.github.io</strong> repository.</p>
+      <div class="actions">
+        <a class="btn" href="https://github.com/cppaml.github.io" target="_blank" rel="noopener">View our GitHub</a>
+        <a class="btn secondary" href="#projects">Explore projects</a>
+      </div>
+      <div class="switch" style="margin-top:14px">
+        <input id="toggle-contrast" type="checkbox" aria-describedby="contrast-mode" />
+        <label for="toggle-contrast">High‑contrast mode</label>
+        <span id="contrast-mode" class="sr-only">Toggle high contrast for improved readability</span>
+      </div>
+    </section>
+
+    <section id="about" class="grid" aria-label="About Cal Poly Pomona Applied Mathematics Lab">
+      <article class="card half">
+        <h3>About</h3>
+        <p>Replace this text with a one‑paragraph description of what your organization does, who you serve, and why it exists. Keep it crisp and human.</p>
+      </article>
+      <article class="card half">
+        <h3>Highlights</h3>
+        <ul class="muted" style="margin:0 0 0 18px">
+          <li>✔️ Mission‑driven, open by default</li>
+          <li>✔️ Actively maintained projects</li>
+          <li>✔️ Welcoming contributors and collaborators</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="projects" class="grid" aria-label="Featured projects">
+      <article class="card third">
+        <h3>Project One</h3>
+        <p class="muted">Short description of a flagship repository or initiative. Link to docs or a README.</p>
+        <p><a href="#">Read more →</a></p>
+      </article>
+      <article class="card third">
+        <h3>Project Two</h3>
+        <p class="muted">Another highlight. Keep this tight; visitors should grasp it in a few seconds.</p>
+        <p><a href="#">Read more →</a></p>
+      </article>
+      <article class="card third">
+        <h3>Project Three</h3>
+        <p class="muted">Optional card. Duplicate and replace with actual projects or delete this section.</p>
+        <p><a href="#">Read more →</a></p>
+      </article>
+    </section>
+
+    <section id="team" class="grid" aria-label="Team">
+      <article class="card">
+        <h3>Team</h3>
+        <p class="muted">Introduce your core maintainers or leadership. You can keep this simple or link to a dedicated page.</p>
+      </article>
+    </section>
+
+    <section id="latest" class="grid" aria-label="Latest repositories">
+      <article class="card">
+        <h3>Latest on GitHub</h3>
+        <p class="muted">Automatically lists the most recently updated public repositories for your org. Set <code>ORG_JSON_HANDLE</code> below.</p>
+        <div id="repos" role="list"></div>
+      </article>
+    </section>
+
+    <section id="contact" class="grid" aria-label="Contact">
+      <article class="card">
+        <h3>Contact</h3>
+        <p class="muted">Email: <a href="mailto:hello@example.com">hello@example.com</a> • X/Twitter: <a href="https://x.com/example" target="_blank" rel="noopener">@example</a></p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <small>© <span id="year"></span> Cal Poly Pomona Applied Mathematics Lab Built with GitHub Pages</small>
+    </footer>
+  </main>
+
+  <script>
+    // --- High contrast toggle (stored in localStorage) ---
+    const checkbox = document.getElementById('toggle-contrast');
+    const hc = localStorage.getItem('contrast') === '1';
+    if (hc) document.documentElement.style.filter = 'contrast(1.15) saturate(1.1)';
+    checkbox.checked = hc;
+    checkbox.addEventListener('change', () => {
+      const on = checkbox.checked;
+      document.documentElement.style.filter = on ? 'contrast(1.15) saturate(1.1)' : '';
+      localStorage.setItem('contrast', on ? '1' : '0');
+    });
+
+    // --- Year ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Replace placeholders quickly if you prefer editing here ---
+    // set ORG_JSON_HANDLE for API fetch.
+
+    // --- Fetch latest repos (optional) ---
+    const ORG_JSON_HANDLE = 'cppaml.github.io';
+    async function loadRepos(){
+      try{
+        const res = await fetch(`https://api.github.com/orgs/${ORG_JSON_HANDLE}/repos?per_page=6&sort=updated`);
+        if(!res.ok) throw new Error('GitHub API error');
+        const data = await res.json();
+        const root = document.getElementById('repos');
+        root.innerHTML = '';
+        data.slice(0,6).forEach(repo => {
+          const div = document.createElement('div');
+          div.className = 'repo';
+          div.setAttribute('role','listitem');
+          div.innerHTML = `
+            <div>
+              <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+              <div class="muted" style="font-size:14px">${repo.description ?? 'No description'} · ★ ${repo.stargazers_count}</div>
+            </div>
+            <div class="muted" style="font-size:12px">Updated ${new Date(repo.updated_at).toLocaleDateString()}</div>
+          `;
+          root.appendChild(div);
+        });
+      }catch(err){
+        document.getElementById('repos').innerHTML = '<p class="muted">Unable to load repos right now.</p>';
+      }
+    }
+    loadRepos();
+  </script>
+</body>
+</html>
