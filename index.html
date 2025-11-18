@@ -56,11 +56,11 @@
       - Example: set --accent to another hex color like #ff00aa
     */
     :root {
-      --bg: #121212;    /* page background (dark mode default) */
-      --fg: #e5eef7;    /* main text color */
-      --muted: #A4D65E; /* lighter text for descriptions */
-      --card: #0f172a;  /* card background blocks */
-      --accent: #FFB81C;/* link/button color */
+      --bg: #005030;    /* page background (dark mode default) */
+      --fg: #FFB81C;    /* main text color */
+      --muted: #FFFFFF; /* lighter text for descriptions */
+      --card: #121212;  /* card background blocks */
+      --accent: #A4D65E;/* link/button color */
       --ring: rgba(14, 165, 233, 0.35); /* focus outline glow */
       --shadow: 0 10px 30px rgba(2, 6, 23, 0.35); /* drop shadow */
       --radius: 18px;   /* corner roundness for cards/buttons */
@@ -72,11 +72,11 @@
     */
     @media (prefers-color-scheme: light) {
       :root {
-        --bg: #f8fafc;
-        --fg: #0b1324;
-        --muted: #5a6b7c;
+        --bg: #F2EEE8;
+        --fg: #005030;
+        --muted: #121212;
         --card: #ffffff;
-        --accent: #0ea5e9;
+        --accent: #FFB81C;
         --ring: rgba(14, 165, 233, 0.25);
         --shadow: 0 10px 25px rgba(2, 6, 23, 0.10);
       }
@@ -240,12 +240,30 @@
       </article>
 
       <article class="card half">
-        <h3>Highlights</h3>
+        <h3>We explore</h3>
         <!-- Simple list. Add/remove <li> items as needed. -->
         <ul class="muted" style="margin:0 0 0 18px">
-          <li>Cool thing 1</li>
-          <li>Cool thing 2</li>
-          <li>Cool thing 3</li>
+          <li>hands-on applications of math in industry</li>
+          <li>robotics</li>
+		  <li>kinematics and control</li>
+          <li>computer vision</li>
+		  <li>programming</li>
+          <li>machine learning</li>
+          <li>data science</li>
+		  <li>modeling</li>
+          <li>simulation</li>
+          <li>visualization</li>
+		  <li>creating educational demonstrations, videos, and activities</li>
+		</ul>
+		<h3>using</h3>
+        <!-- Simple list. Add/remove <li> items as needed. -->
+        <ul class="muted" style="margin:0 0 0 18px">
+          <li>linear algebra</li>
+          <li>advanced calculus and differential equations</li>
+		  <li>differential and algebraic geometry</li>
+          <li>topology</li>
+          <li>analysis</li>
+		  <li>and more</li>
         </ul>
       </article>
     </section>
@@ -278,6 +296,18 @@
         <p class="muted">About us!</p>
       </article>
     </section>
+	
+	    <!--List supporting organizations here. -->
+    <section id="Sponsors" class="grid" aria-label="Team">
+      <article class="card">
+        <h3>Sponsors</h3>
+		  <ul class="muted" style="margin:0 0 0 18px">
+          <li>Carbide 3D</li>
+          <li>Universal Robots</li>
+		  <li>Kane Robotics</li>
+        </ul>
+      </article>
+    </section>
 
     <!-- Latest section: JavaScript below fills this with your latest GitHub repos. -->
     <section id="latest" class="grid" aria-label="Latest repositories">
@@ -293,7 +323,8 @@
       <article class="card">
         <h3>Contact</h3>
         <p class="muted">
-          Email: <a href="mailto:hello@example.com">hello@example.com</a>
+		Dr. Arlo Caine
+          Email: <a href="mailto:jacaine@cpp.edu">jacaine@cpp.edu</a>
           • X/Twitter: <a href="https://x.com/example" target="_blank" rel="noopener">@example</a>
         </p>
       </article>
