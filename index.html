@@ -26,10 +26,10 @@
   <title>CPP Applied Mathematics Lab</title>
 
   <!-- Short description for search engines and link previews -->
-  <meta name="description" content="Official website for CPP Applied Math Lab." />
+  <meta name="description" content="Official website for the Cal Poly Pomona Applied Math Lab." />
 
   <!-- Open Graph tags: used by social media (X/Twitter, Facebook, etc.) for previews -->
-  <meta property="og:title" content="CPPAML" />
+  <meta property="og:title" content="CPP Applied Mathematics Lab" />
   <meta property="og:description" content="Official website for Cal Poly Pomona Applied Mathematics Lab." />
   <meta property="og:type" content="website" />
 
@@ -75,9 +75,9 @@
       --muted: #A4D65E; /* lighter text for descriptions */
       --card: #121212;  /* card background blocks */
       --accent: #FFB81C;/* link/button color */
-      --ring: rgba(14, 165, 233, 0.35); /* focus outline glow */
-      --shadow: 0 10px 30px rgba(0, 80, 48, 0.35); /* drop shadow */
-      --radius: 18px;   /* corner roundness for cards/buttons */
+      --ring: rgba(164, 214, 94, 0.35); /* focus outline glow */
+      --shadow: 0 10px 30px rgba(164, 214, 94, 0.35); /* drop shadow */
+      --radius: 1px;   /* corner roundness for cards/buttons */
     }
 
     /*
@@ -91,8 +91,8 @@
         --muted: #121212;
         --card: #ffffff;
         --accent: #005030;
-        --ring: rgba(14, 165, 233, 0.25);
-        --shadow: 0 10px 25px rgba(2, 6, 23, 0.10);
+        --ring: rgba(207, 186, 176, 0.25);
+        --shadow: 0 10px 25px rgba(207, 186, 176, 0.10);
       }
     }
 
@@ -109,14 +109,15 @@
 	  font: 16px/1.6 usual;
       /*font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;*/
       color: var(--fg);
+	  
       background:
         /* green glow on left */
-        radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.12), transparent 40%),
+        radial-gradient(1200px 600px at 10% -10%, rgba(255,184,28,.12), transparent 40%),
         /* purple glow on right */
-        radial-gradient(800px 500px at 90% 10%, rgba(99,102,241,.10), transparent 40%),
+        radial-gradient(800px 500px at 90% 10%, rgba(255,184,28,.10), transparent 40%),
         var(--bg); /* fallback solid background color */
     }
-
+	
     /* Links (a) look like the accent color, underlined on hover */
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
