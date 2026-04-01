@@ -75,6 +75,7 @@
       --muted: #A4D65E; /* lighter text for descriptions */
       --card: #121212;  /* card background blocks */
       --accent: #FFB81C;/* link/button color */
+	  --accent2: #FFB81C;/* link/button color */
       --ring: rgba(164, 214, 94, 0.35); /* focus outline glow */
       --shadow: 0 10px 30px rgba(164, 214, 94, 0.35); /* drop shadow */
       --radius: 1px;   /* corner roundness for cards/buttons */
@@ -90,9 +91,10 @@
         --fg: #005030;
         --muted: #121212;
         --card: #ffffff;
-        --accent: #005030;
-        --ring: rgba(207, 186, 176, 0.25);
-        --shadow: 0 10px 25px rgba(207, 186, 176, 0.10);
+        --accent: #FFB81C;
+		--accent2: #FFB81C;
+        --ring: rgba(207, 186, 176, 0.25); /* (bay brown) */
+        --shadow: 0 10px 25px rgba(207, 186, 176, 0.10); /* (bay brown) */
       }
     }
 
@@ -111,9 +113,9 @@
       color: var(--fg);
 	  
       background:
-        /* green glow on left */
+        /* gold glow on left */
         radial-gradient(1200px 600px at 10% -10%, rgba(255,184,28,.12), transparent 40%),
-        /* purple glow on right */
+        /* gold glow on right */
         radial-gradient(800px 500px at 90% 10%, rgba(255,184,28,.10), transparent 40%),
         var(--bg); /* fallback solid background color */
     }
@@ -135,11 +137,11 @@
     header {
       position: sticky; top: 0;
       backdrop-filter: saturate(180%) blur(10px);
-      background: linear-gradient(to bottom, rgba(15,23,42,.85), rgba(15,23,42,.6));
-      border-bottom: 1px solid rgba(148,163,184,.12);
+      background: linear-gradient(to bottom, rgba(0,80,48,.85), rgba(0,80,48,.6));
+      border-bottom: 1px solid rgba(164,214,94,.12);
     }
     @media (prefers-color-scheme: light) {
-      header { background: rgba(248,250,252,.8); }
+      header { background: rgba(242,238,232,.8); }
     }
 
     /* Top navigation bar: logo on the left, links on the right */
@@ -147,12 +149,12 @@
     .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .3px; }
     .logo-mark { width: 36px; height: 36px; border-radius: 12px; background: var(--accent); display: grid; place-items: center; color: white; box-shadow: var(--shadow); }
     .nav a { padding: 10px 12px; border-radius: 10px; }
-    .nav a[aria-current="page"] { background: rgba(0,80,48,.12); }
+    .nav a[aria-current="page"] { background: var(--fg) }
 
     /* Hero (top section) */
     .hero { padding: 84px 0 36px; }
     .title { font-size: clamp(28px, 4vw, 46px); line-height: 1.1; margin: 0 0 12px; }
-    .subtitle { color: var(--muted); max-width: 70ch; margin: 0; }
+    .subtitle { color: var(--accent); max-width: 70ch; margin: 0; }
     .actions { margin-top: 22px; display: flex; gap: 14px; flex-wrap: wrap; }
 
     /* Buttons */
@@ -184,6 +186,114 @@
 
     /* Small wrapper to align the high-contrast toggle nicely */
     .switch { display: inline-flex; align-items: center; gap: 10px; }
+	
+	/* Carousel features */
+
+    ul4 {width: 1050px; height: 300px; padding: 10px; background-color:  var(--card); overflow-x: scroll; scroll-snap-type: x mandatory; columns: 1;text-align: center;}
+li4 {
+  list-style-type: none;
+
+  display: inline-block;
+  height: 100%;
+  width: 200px;
+
+  background-color: #eeeeef;
+  border: 1px solid #dddddd;
+  padding: 20px;
+  margin: 0 10px;
+
+  text-align: left;
+}
+
+
+ul4::column {
+  scroll-snap-align: center;
+}
+ul4::scroll-button(*) {
+  border: 0;
+  font-size: 2rem;
+  background: none;
+  color: black;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+ul4::scroll-button(*):hover,
+ul4::scroll-button(*):focus {
+  opacity: 1;
+}
+
+ul4::scroll-button(*):active {
+  translate: 1px 1px;
+}
+
+ul4::scroll-button(*):disabled {
+  opacity: 0.2;
+  cursor: unset;
+}
+
+ul4::scroll-button(left) {
+  content: "◄";
+}
+
+ul4::scroll-button(right) {
+  content: "►";
+}
+
+ul4 {
+  anchor-name: --my-carousel;
+}
+
+ul4::scroll-button(*) {
+  position: absolute;
+  position-anchor: --my-carousel;
+}
+
+ul4::scroll-button(left) {
+  right: calc(anchor(left) - 70px);
+  bottom: calc(anchor(top) + 13px);
+}
+
+ul4::scroll-button(right) {
+  left: calc(anchor(right) - 70px);
+  bottom: calc(anchor(top) + 13px);
+}
+
+ul4 {
+  scroll-marker-group: after;
+}
+
+ul4::scroll-marker-group {
+  position: absolute;
+  position-anchor: --my-carousel;
+  top: calc(anchor(bottom) - 70px);
+  justify-self: anchor-center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+ul4::column::scroll-marker {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+ul4::column::scroll-marker:target-before {
+  border: 2px solid gray;
+}
+
+ul4::column::scroll-marker:target-current {
+  background-color: black;
+  transition: all 0.7s;
+}
+
+ul4::column::scroll-marker:target-after {
+  border: 2px solid red;
+  background-color: red;
+}
+
   </style>
 </head>
 
@@ -253,6 +363,7 @@
 		  Open to Cal Poly Pomona students and faculty, we are supported by the Department of Mathematics and Statistics, the College of Science,
 		  and a number of sponsors from the robotics industry.
         </p>
+		<img src="images/hy.png">
       </article>
 
       <article class="card half">
@@ -312,10 +423,59 @@
 
     <!-- Team section: add member info, photos, or links here. -->
     <section id="team" class="grid" aria-label="Team">
-      <article class="card">
+<ul4>
         <h3>Team</h3>
-        <p class="muted">About us!</p>
-      </article>
+  <li4>
+  	<img src="images/dan.png" width="150px">
+    <h2>Item 1</h2>
+  </li4>
+  <li4>
+	<img src="images/bee.png" width="150px">
+    <h2>Item 2</h2>
+  </li4>
+  <li4>
+    <img src="images/vio.png" width="150px">
+    <h2>Item 3</h2>
+  </li4>
+  <li4>
+    <img src="images/wood.png" width="150px">
+    <h2>Item 4</h2>
+  </li4>
+  <li4>
+    <img src="images/sor.png" width="150px">
+    <h2>Item 5</h2>
+  </li4>
+  <li4>
+    <h2>Item 6</h2>
+  </li4>
+  <li4>
+    <h2>Item 7</h2>
+  </li4>
+  <li4>
+    <h2>Item 8</h2>
+  </li4>
+  <li4>
+    <h2>Item 9</h2>
+  </li4>
+  <li4>
+    <h2>Item 10</h2>
+  </li4>
+  <li4>
+    <h2>Item 11</h2>
+  </li4>
+  <li4>
+    <h2>Item 12</h2>
+  </li4>
+  <li4>
+    <h2>Item 13</h2>
+  </li4>
+  <li4>
+    <h2>Item 14</h2>
+  </li4>
+  <li4>
+    <h2>Item 15</h2>
+  </li4>
+</ul4>
     </section>
 	
 	    <!--List supporting organizations here. -->
